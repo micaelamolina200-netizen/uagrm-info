@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Comercio Internacional – Info Rápida UAGRM</title>
+  <meta name="description" content="Página informativa con reglamentos, misión, visión, valores, perfil de la carrera, datos y ubicaciones clave.">
+  <style>
+    :root{
+      --rojo:#d32f2f; /* UAGRM vibe */
+      --azul:#0d47a1;
+      --gris:#f4f6f8;
+      --texto:#1f2937;
+      --borde:#e5e7eb;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,'Noto Sans',sans-serif;
+      color:var(--texto); background:var(--gris);
+    }
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px);
+      background:rgba(255,255,255,.85); border-bottom:1px solid var(--borde);
+    }
+    .container{max-width:1100px; margin:auto; padding:16px;}
+    .brand{display:flex; gap:12px; align-items:center;}
+    .brand .logo{width:36px; height:36px; border-radius:9px; background:linear-gradient(135deg,var(--rojo),var(--azul)); box-shadow:0 4px 16px rgba(0,0,0,.12);}
+    h1{margin:0; font-size:20px;}
+    .search{display:flex; gap:12px; flex-wrap:wrap; padding:12px 0 16px}
+    .search input{
+      flex:1; padding:12px 14px; border:1px solid var(--borde); border-radius:12px; background:#fff;
+      outline:none; font-size:15px;
+    }
+    .grid{
+      display:grid; grid-template-columns:repeat(1,minmax(0,1fr)); gap:14px;
+    }
+    @media(min-width:700px){
+      .grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
+    @media(min-width:980px){
+      .grid{ grid-template-columns:repeat(3,minmax(0,1fr)); }
+    }
+    .card{
+      background:#fff; border:1px solid var(--borde); border-radius:16px; padding:16px;
+      display:flex; gap:12px; align-items:flex-start; transition:transform .08s ease, box-shadow .08s ease;
+      box-shadow:0 1px 0 rgba(0,0,0,.03);
+      cursor:pointer;
+    }
+    .card:hover{ transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,.08); }
+    .icon{width:36px; height:36px; border-radius:10px; display:grid; place-items:center; color:#fff; font-weight:700; background:var(--azul);}
+    .card h3{margin:2px 0 6px; font-size:16px;}
+    .card p{margin:0; color:#4b5563; font-size:14px;}
+    section{scroll-margin-top:90px}
+    .section{background:#fff; border:1px solid var(--borde); border-radius:16px; padding:20px; margin-top:18px;}
+    h2{font-size:18px; margin:0 0 10px}
+    .pill{display:inline-block; padding:4px 10px; border-radius:999px; font-size:12px; background:#eef2ff; color:var(--azul); border:1px solid #dbeafe}
+    .list{padding-left:18px; line-height:1.55}
+    .two-col{display:grid; gap:16px}
+    @media(min-width:900px){ .two-col{grid-template-columns:1.2fr .8fr} }
+    .qr-wrap{display:flex; gap:16px; align-items:center; flex-wrap:wrap; border:1px dashed var(--borde); border-radius:14px; padding:12px}
+    .qr-wrap img{width:140px; height:140px; background:#fff; border-radius:12px; border:1px solid var(--borde)}
+    footer{color:#6b7280; font-size:12px; padding:22px 0 40px; text-align:center}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace; background:#111827; color:#fff; padding:2px 6px; border-radius:6px; font-size:12px}
+    .map{width:100%; height:260px; border:0; border-radius:12px}
+    .muted{color:#6b7280}
+    .tag{display:inline-block; padding:2px 8px; border:1px solid var(--borde); border-radius:999px; font-size:12px; margin-right:6px; margin-bottom:6px; background:#fafafa}
+    .ghost-btn{border:1px solid var(--borde); background:#fff; padding:8px 12px; border-radius:10px; font-size:13px; cursor:pointer}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Comercio Internacional · UAGRM</h1>
+          <div class="muted" style="font-size:12px">Información clave · Escanea o navega</div>
+        </div>
+      </div>
+      <button class="ghost-btn" onclick="window.print()">Imprimir/Guardar PDF</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="search">
+      <input id="search" type="search" placeholder="Busca: reglamento, misión, módulos, sala de cómputo, auditorio, talleres, viajes…" aria-label="Buscar">
+      <div class="qr-wrap">
+        <img id="qr" alt="QR de esta página" />
+        <div>
+          <div class="muted" style="margin-bottom:6px">Escanéame para abrir esta página</div>
+          <div style="font-size:12px; word-break:break-all" id="pageUrl">URL</div>
+          <div class="muted" style="font-size:12px">Sugerencia: guarda esta imagen para usarla en pósters o presentaciones.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid" id="menu">
+      <!-- Cards: clicking scrolls to sections or opens external links -->
+      <a class="card" href="#regimen-estudiantil">
+        <div class="icon">R</div>
+        <div><h3>Reglamento del Régimen Estudiantil</h3><p>Resumen y enlace oficial al documento.</p></div>
+      </a>
+      <a class="card" href="#estatuto-organico">
+        <div class="icon">E</div>
+        <div><h3>Estatuto Orgánico de la UAGRM</h3><p>Principios y estructura institucional.</p></div>
+      </a>
+      <a class="card" href="#reglamento-profesor">
+        <div class="icon">P</div>
+        <div><h3>Reglamento General del Profesor Universitario</h3><p>Funciones, deberes y normativa docente.</p></div>
+      </a>
+      <a class="card" href="#mision-vision-valores">
+        <div class="icon">M</div>
+        <div><h3>Misión, Visión y Valores</h3><p>Propósito y norte estratégico de la carrera.</p></div>
+      </a>
+      <a class="card" href="#perfil-egreso">
+        <div class="icon">ℹ</div>
+        <div><h3>Perfil del Profesional</h3><p>Competencias y salidas profesionales.</p></div>
+      </a>
+      <a class="card" href="#datos-carrera">
+        <div class="icon">D</div>
+        <div><h3>Datos de la Carrera</h3><p>Número de estudiantes, egresados y más.</p></div>
+      </a>
+      <a class="card" href="#talleres-viajes">
+        <div class="icon">T</div>
+        <div><h3>Talleres y Viajes Estudiantiles</h3><p>Programas, convocatorias y evidencias.</p></div>
+      </a>
+      <a class="card" href="#infraestructura">
+        <div class="icon">U</div>
+        <div><h3>Ubicaciones clave</h3><p>Módulos, sala de cómputo, auditorio y mapa.</p></div>
+      </a>
+      <a class="card" href="#contacto">
+        <div class="icon">C</div>
+        <div><h3>Contacto y Consultas</h3><p>Vías oficiales y formulario de dudas.</p></div>
+      </a>
+    </div>
+
+    <!-- Secciones de contenido -->
+    <section id="regimen-estudiantil" class="section">
+      <h2>Reglamento del Régimen Estudiantil <span class="pill">Documento</span></h2>
+      <p>Descripción breve (1–2 líneas) del objetivo del reglamento. Agrega aquí el enlace oficial:</p>
+      <ul class="list">
+        <li><a href="#" target="_blank" rel="noopener">Enlace oficial al reglamento (UAGRM)</a></li>
+        <li><a href="#" target="_blank" rel="noopener">Descargar PDF espejo (copia en tu Drive)</a></li>
+      </ul>
+    </section>
+
+    <section id="estatuto-organico" class="section">
+      <h2>Estatuto Orgánico de la UAGRM <span class="pill">Documento</span></h2>
+      <p>Breve síntesis del estatuto y su importancia para la gobernanza universitaria.</p>
+      <ul class="list">
+        <li><a href="#" target="_blank" rel="noopener">Enlace oficial al Estatuto Orgánico</a></li>
+        <li><a href="#" target="_blank" rel="noopener">Descargar PDF espejo</a></li>
+      </ul>
+    </section>
+
+    <section id="reglamento-profesor" class="section">
+      <h2>Reglamento General del Profesor Universitario <span class="pill">Documento</span></h2>
+      <p>Aspectos clave: funciones del docente, evaluación, régimen de trabajo.</p>
+      <ul class="list">
+        <li><a href="#" target="_blank" rel="noopener">Enlace oficial al Reglamento del Profesor</a></li>
+        <li><a href="#" target="_blank" rel="noopener">Descargar PDF espejo</a></li>
+      </ul>
+    </section>
+
+    <section id="mision-vision-valores" class="section">
+      <h2>Misión, Visión y Valores <span class="pill">Carrera</span></h2>
+      <div class="two-col">
+        <div>
+          <h3 style="margin-top:0">Misión</h3>
+          <p class="muted">[Escribe aquí la misión oficial de la carrera.]</p>
+          <h3>Visión</h3>
+          <p class="muted">[Escribe aquí la visión oficial de la carrera.]</p>
+          <h3>Valores</h3>
+          <p class="muted">[Enumera los valores: p. ej., Ética, Innovación, Excelencia, Responsabilidad Social.]</p>
+        </div>
+        <div>
+          <h3>¿Dónde citar?</h3>
+          <p>Agrega el enlace a la fuente oficial de la carrera o facultad.</p>
+          <ul class="list">
+            <li><a href="#" target="_blank" rel="noopener">Página oficial de la carrera</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="perfil-egreso" class="section">
+      <h2>Perfil del Profesional <span class="pill">Carrera</span></h2>
+      <p>Resumen de competencias del egresado/a (3–6 bullets máximo):</p>
+      <ul class="list">
+        <li>Gestión de comercio exterior, logística y normativa.</li>
+        <li>Negociación internacional y análisis de mercados.</li>
+        <li>Uso de herramientas tecnológicas y analíticas.</li>
+        <li>Competencias éticas y liderazgo.</li>
+      </ul>
+      <p class="muted">Agrega fuente oficial o plan de estudios con el perfil completo.</p>
+    </section>
+
+    <section id="datos-carrera" class="section">
+      <h2>Datos de la Carrera <span class="pill">Estadísticas</span></h2>
+      <div class="two-col">
+        <div>
+          <div class="tag">Estudiantes actuales: <strong>[actualizar]</strong></div>
+          <div class="tag">Egresados/as totales: <strong>[actualizar]</strong></div>
+          <div class="tag">Docentes: <strong>[actualizar]</strong></div>
+          <div class="tag">Talleres/año: <strong>[actualizar]</strong></div>
+          <div class="tag">Viajes/año: <strong>[actualizar]</strong></div>
+          <p class="muted" style="margin-top:8px">Tip: añade un enlace a una hoja de cálculo o tablero público con más detalle.</p>
+        </div>
+        <div>
+          <h3 style="margin-top:0">Evidencias y fuentes</h3>
+          <ul class="list">
+            <li><a href="#" target="_blank" rel="noopener">Reporte estadístico (Drive o sitio oficial)</a></li>
+            <li><a href="#" target="_blank" rel="noopener">Galería de actividades</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="talleres-viajes" class="section">
+      <h2>Talleres y Viajes Estudiantiles <span class="pill">Actividades</span></h2>
+      <p>Publica cronogramas, convocatorias y álbumes de viajes:</p>
+      <ul class="list">
+        <li><a href="#" target="_blank" rel="noopener">Calendario de talleres (p. ej., Google Calendar público)</a></li>
+        <li><a href="#" target="_blank" rel="noopener">Convocatorias vigentes</a></li>
+        <li><a href="#" target="_blank" rel="noopener">Galería de viajes</a></li>
+      </ul>
+    </section>
+
+    <section id="infraestructura" class="section">
+      <h2>Ubicaciones Clave <span class="pill">Mapa</span></h2>
+      <div class="two-col">
+        <div>
+          <ul class="list">
+            <li><strong>Módulos de la carrera:</strong> [módulo X, módulo Y].</li>
+            <li><strong>Sala de cómputo:</strong> [piso, módulo].</li>
+            <li><strong>Auditorio:</strong> [nombre, ubicación exacta].</li>
+          </ul>
+          <p class="muted">Sugerencia: añade un enlace a Google Maps de cada punto.</p>
+        </div>
+        <div>
+          <!-- Mapa (reemplaza src con el mapa embebido real de Google Maps) -->
+          <iframe class="map" loading="lazy" allowfullscreen
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.337!2d-63.182!3d-17.781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z"
+            title="Mapa UAGRM (ejemplo)"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section">
+      <h2>Contacto y Consultas <span class="pill">Formulario</span></h2>
+      <p>Comparte vías oficiales y, opcionalmente, un formulario de atención:</p>
+      <ul class="list">
+        <li><a href="#" target="_blank" rel="noopener">Sitio oficial de la Facultad / Carrera</a></li>
+        <li><a href="#" target="_blank" rel="noopener">Facebook / Instagram</a></li>
+        <li><a href="#" target="_blank" rel="noopener">WhatsApp de coordinación (opcional)</a></li>
+        <li><a href="#" target="_blank" rel="noopener">Formulario de consultas (Google Forms)</a></li>
+      </ul>
+    </section>
+
+    <section class="section" id="extras">
+      <h2>Extras creativos <span class="pill">Opcional</span></h2>
+      <ul class="list">
+        <li>Botón <span class="kbd">Imprimir/Guardar PDF</span> en el encabezado para entregar físico.</li>
+        <li>Buscador instantáneo arriba que filtra las tarjetas del menú.</li>
+        <li>QR dinámico que apunta a la URL donde esté publicada la página (autogenerado).</li>
+        <li>Secciones con anclas para navegación rápida desde el menú.</li>
+        <li>Mapa embebido con puntos clave del campus.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    Hecho por el equipo — Proyecto de Informática/Comercio Internacional · UAGRM<br/>
+    <span class="muted">Sugerencia: agrega créditos de autores y fecha.</span>
+  </footer>
+
+  <script>
+    // Filtro de búsqueda simple
+    const q = document.getElementById('search');
+    const menu = document.getElementById('menu');
+    const cards = Array.from(menu.querySelectorAll('.card'));
+    q.addEventListener('input', () => {
+      const v = q.value.trim().toLowerCase();
+      cards.forEach(c => {
+        const t = c.innerText.toLowerCase();
+        c.style.display = t.includes(v) ? '' : 'none';
+      });
+    });
+
+    // QR que apunta a la URL actual (cuando esté publicada)
+    const url = window.location.href;
+    const qr = document.getElementById('qr');
+    const urlEl = document.getElementById('pageUrl');
+    urlEl.textContent = url;
+    // Usa un servicio público de QR para generar la imagen (se carga en el navegador del usuario)
+    const encoded = encodeURIComponent(url);
+    qr.src = `https://api.qrserver.com/v1/create-qr-code/?size=600x600&data=${encoded}`;
+    qr.addEventListener('error', () => {
+      // Fallback: muestra un QR con texto genérico si falla el servicio
+      qr.removeAttribute('src');
+      qr.alt = 'QR no disponible. Usa cualquier generador con esta URL: ' + url;
+    });
+  </script>
+</body>
+</html>
