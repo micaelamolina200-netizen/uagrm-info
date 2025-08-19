@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Acreditación · Comercio Internacional – UAGRM</title>
+  <meta name="description" content="Repositorio de documentos para acreditación: resumen ejecutivo y áreas 1 a 5.">
+  <style>
+    :root{
+      --rojo:#d32f2f;
+      --azul:#0d47a1;
+      --gris:#f4f6f8;
+      --texto:#1f2937;
+      --borde:#e5e7eb;
+    }
+    *{box-sizing:border-box}
+    body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,'Noto Sans',sans-serif;
+      color:var(--texto); background:var(--gris); }
+    header{ position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px);
+      background:rgba(255,255,255,.85); border-bottom:1px solid var(--borde); }
+    .container{ max-width:1100px; margin:auto; padding:16px; }
+    .brand{ display:flex; gap:12px; align-items:center;}
+    .brand .logo{width:36px; height:36px; border-radius:9px; background:linear-gradient(135deg,var(--rojo),var(--azul)); box-shadow:0 4px 16px rgba(0,0,0,.12);}
+    h1{ margin:0; font-size:20px;}
+    .grid{ display:grid; grid-template-columns:repeat(1,minmax(0,1fr)); gap:14px;}
+    @media(min-width:700px){ .grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media(min-width:980px){ .grid{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
+    .card{ background:#fff; border:1px solid var(--borde); border-radius:16px; padding:16px;
+      display:flex; gap:12px; align-items:flex-start; transition:transform .08s ease, box-shadow .08s ease; box-shadow:0 1px 0 rgba(0,0,0,.03); text-decoration:none; color:inherit;}
+    .card:hover{ transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,.08); }
+    .icon{ width:36px; height:36px; border-radius:10px; display:grid; place-items:center; color:#fff; font-weight:700; background:var(--azul); }
+    .card h3{ margin:2px 0 6px; font-size:16px;}
+    .card p{ margin:0; color:#4b5563; font-size:14px;}
+    section{ scroll-margin-top:90px }
+    .section{ background:#fff; border:1px solid var(--borde); border-radius:16px; padding:20px; margin-top:18px; }
+    h2{ font-size:18px; margin:0 0 10px }
+    .pill{ display:inline-block; padding:4px 10px; border-radius:999px; font-size:12px; background:#eef2ff; color:#0d47a1; border:1px solid #dbeafe }
+    .btn{ display:inline-block; padding:10px 14px; border-radius:10px; border:1px solid var(--borde); background:#0d47a1; color:#fff; text-decoration:none; font-weight:600; font-size:14px }
+    .btn:focus,.btn:hover{ filter:brightness(1.05) }
+    .muted{ color:#6b7280 }
+    .qr-wrap{display:flex; gap:16px; align-items:center; flex-wrap:wrap; border:1px dashed var(--borde); border-radius:14px; padding:12px}
+    .qr-wrap img{width:140px; height:140px; background:#fff; border-radius:12px; border:1px solid var(--borde)}
+    footer{ color:#6b7280; font-size:12px; padding:22px 0 40px; text-align:center }
+    /* HERO */
+    .hero{ background:linear-gradient(180deg,#ffffff,var(--gris)); border-bottom:1px solid var(--borde);
+      display:grid; place-items:center; text-align:center; padding:28px 16px 20px;}
+    .hero-logo{ width:160px; height:auto; object-fit:contain; border-radius:12px; background:#fff; border:1px solid var(--borde); padding:8px;
+      box-shadow:0 6px 18px rgba(0,0,0,.06); }
+    .hero-title{ margin:12px 0 4px; font-size:24px; font-weight:700 }
+    .hero-sub{ margin:0; color:#6b7280; font-size:15px }
+  </style>
+</head>
+<body>
+  <!-- HERO con logo (opcional: reemplaza src por tu archivo de logo en el repo) -->
+  <section class="hero">
+    <img src="Logotipo.jpg" alt="Comercio Internacional - FCEE UAGRM" class="hero-logo">
+    <h1 class="hero-title">Acreditación · Comercio Internacional</h1>
+    <p class="hero-sub">Repositorio de documentos: Resumen Ejecutivo y Áreas 1–5</p>
+  </section>
+
+  <header>
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Acreditación · UAGRM</h1>
+          <div class="muted" style="font-size:12px">Documentos oficiales · Escanea o navega</div>
+        </div>
+      </div>
+      <button class="btn" onclick="window.print()">Imprimir/Guardar PDF</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- QR para compartir rápidamente esta página (se genera con la URL publicada) -->
+    <div class="qr-wrap" style="margin:8px 0 16px">
+      <img id="qr" alt="QR de esta página" />
+      <div>
+        <div class="muted" style="margin-bottom:6px">Escanéame para abrir esta página</div>
+        <div style="font-size:12px; word-break:break-all" id="pageUrl">URL</div>
+        <div class="muted" style="font-size:12px">Sugerencia: usa este QR en pósters o presentaciones.</div>
+      </div>
+    </div>
+
+    <!-- Menú de tarjetas -->
+    <div class="grid">
+      <a class="card" href="#resumen">
+        <div class="icon">R</div>
+        <div><h3>RESUMEN EJECUTIVO PARA LA ACREDITACIÓN</h3><p>Descarga del documento oficial.</p></div>
+      </a>
+      <a class="card" href="#area1">
+        <div class="icon">1</div>
+        <div><h3>ÁREA 1</h3><p>Marco y evidencias del Área 1.</p></div>
+      </a>
+      <a class="card" href="#area2">
+        <div class="icon">2</div>
+        <div><h3>ÁREA 2</h3><p>Marco y evidencias del Área 2.</p></div>
+      </a>
+      <a class="card" href="#area3">
+        <div class="icon">3</div>
+        <div><h3>ÁREA 3</h3><p>Marco y evidencias del Área 3.</p></div>
+      </a>
+      <a class="card" href="#area4">
+        <div class="icon">4</div>
+        <div><h3>ÁREA 4</h3><p>Marco y evidencias del Área 4.</p></div>
+      </a>
+      <a class="card" href="#area5">
+        <div class="icon">5</div>
+        <div><h3>ÁREA 5</h3><p>Marco y evidencias del Área 5.</p></div>
+      </a>
+      <a class="card" href="#areas">
+        <div class="icon">A</div>
+        <div><h3>ÁREAS</h3><p>Paquete completo de áreas (ZIP o carpeta).</p></div>
+      </a>
+    </div>
+
+    <!-- Secciones con botón de descarga (reemplaza los href por tus archivos) -->
+    <section id="resumen" class="section">
+      <h2>Resumen Ejecutivo <span class="pill">PDF</span></h2>
+      <p class="muted">Descarga el documento completo del Resumen Ejecutivo para la acreditación.</p>
+      <a class="btn" href="docs/resumen-ejecutivo.pdf" target="_blank" rel="noopener" download>Descargar Resumen Ejecutivo</a>
+    </section>
+
+    <section id="area1" class="section">
+      <h2>Área 1 <span class="pill">PDF</span></h2>
+      <p class="muted">Documento oficial del Área 1 (guía, matriz y evidencias).</p>
+      <a class="btn" href="docs/area1.pdf" target="_blank" rel="noopener" download>Descargar Área 1</a>
+    </section>
+
+    <section id="area2" class="section">
+      <h2>Área 2 <span class="pill">PDF</span></h2>
+      <p class="muted">Documento oficial del Área 2.</p>
+      <a class="btn" href="docs/area2.pdf" target="_blank" rel="noopener" download>Descargar Área 2</a>
+    </section>
+
+    <section id="area3" class="section">
+      <h2>Área 3 <span class="pill">PDF</span></h2>
+      <p class="muted">Documento oficial del Área 3.</p>
+      <a class="btn" href="docs/area3.pdf" target="_blank" rel="noopener" download>Descargar Área 3</a>
+    </section>
+
+    <section id="area4" class="section">
+      <h2>Área 4 <span class="pill">PDF</span></h2>
+      <p class="muted">Documento oficial del Área 4.</p>
+      <a class="btn" href="docs/area4.pdf" target="_blank" rel="noopener" download>Descargar Área 4</a>
+    </section>
+
+    <section id="area5" class="section">
+      <h2>Área 5 <span class="pill">PDF</span></h2>
+      <p class="muted">Documento oficial del Área 5.</p>
+      <a class="btn" href="docs/area5.pdf" target="_blank" rel="noopener" download>Descargar Área 5</a>
+    </section>
+
+    <section id="areas" class="section">
+      <h2>Áreas (paquete completo) <span class="pill">ZIP o Carpeta</span></h2>
+      <p class="muted">Descarga todas las áreas en un solo archivo o accede a la carpeta compartida.</p>
+      <a class="btn" href="docs/areas.zip" target="_blank" rel="noopener">Descargar paquete (ZIP)</a>
+      &nbsp;
+      <a class="btn" href="https://drive.google.com/drive/folders/TU-CARPETA-AREAS" target="_blank" rel="noopener">Abrir carpeta en Drive</a>
+    </section>
+  </main>
+
+  <footer>
+    Hecho por el equipo — Acreditación · CI UAGRM<br/>
+    <span class="muted">Sugerencia: agrega autores y fecha.</span>
+  </footer>
+
+  <script>
+    // QR dinámico con la URL publicada
+    const url = window.location.href;
+    const qr = document.getElementById('qr');
+    const urlEl = document.getElementById('pageUrl');
+    if(qr && urlEl){
+      urlEl.textContent = url;
+      const encoded = encodeURIComponent(url);
+      qr.src = `https://api.qrserver.com/v1/create-qr-code/?size=600x600&data=${encoded}`;
+    }
+  </script>
+</body>
+</html>
